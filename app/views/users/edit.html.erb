@@ -12,6 +12,19 @@
 
         <%= render 'form' %>
 
+        <br>
+        <% if admin_signed_in? %>
+          <label>Estado</label> <br>
+          <input class="form-control" value="<%= @user.state %>" type="text" disabled>
+          <br>
+
+          <%= link_to "Confirmar", confirmar_path(@user) %> |
+          <%= link_to "Cancelar", cancelar_path(@user)  %> |
+
+        <% end %>
+
+        <%= link_to "Volver", root_path %>
+
       </div>
       <div class="col-md-3"></div>
     </div>

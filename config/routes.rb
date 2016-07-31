@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  
+  get 'users/:id/cancelar' => 'users#cancelar', as: 'cancelar'
+  get 'users/:id/confirmar' => 'users#confirmar', as: 'confirmar'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, except: [:index, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :cancelar, :confirmar]
   before_action :inicializar_db
 
   # GET /users
@@ -49,6 +49,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        if @user.vacio?
+          @user.reservar!
+        end
         format.html { redirect_to root_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -66,6 +69,19 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def confirmar
+    @user.confirmar!
+    redirect_to root_path
+  end
+
+  def cancelar
+    @user.cancelar!
+    @user.name = nil
+    @user.email = nil
+    @user.save
+    redirect_to root_path
   end
 
 
