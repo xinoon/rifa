@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <tr>
+            <th class="text-center">Número</th>
+            <th>Nombre</th>
+            <% if admin_signed_in? %>
+              <th>Editar</th>
+              <th>Mostrar</th>
+            <% end %>
+          </tr>
+
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td class="text-center"><%= user.number %></td>
+                <td><%= user.name %></td>
+                <% if admin_signed_in? %>
+                  <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                  <td><%= link_to 'Show', user %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <% if admin_signed_in? %>
+         <%= link_to "Logout", destroy_admin_session_path, method: :delete%>
+      <% else %>
+        <%= link_to "Iniciar Sesión", new_admin_session_path%> |
+        <%= link_to "Registrarse", new_admin_registration_path %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
