@@ -20,3 +20,7 @@
 table td:first-child {
 	width: 100px;
 }
+
+table td:nth-child(3) {
+	width: 150px;
+}

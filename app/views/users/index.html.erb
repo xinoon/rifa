@@ -10,6 +10,7 @@
           <tr>
             <th class="text-center">Número</th>
             <th>Nombre</th>
+            <th class="text-center">Reservar</th>
             <% if admin_signed_in? %>
               <th>Editar</th>
               <th>Mostrar</th>
@@ -20,7 +21,22 @@
             <% @users.each do |user| %>
               <tr>
                 <td class="text-center"><%= user.number %></td>
-                <td><%= user.name %></td>
+
+                <% if user.vacio? %>
+                  <td><%= user.name %></td>
+                  <td class="text-center"><%= link_to "Reservar" %></td>
+                <% end %>
+
+                <% if user.reservado? %>
+                  <td>Por Confirmar</td>
+                  <td></td>
+                <% end %>
+
+                <% if user.ocupado? %>
+                  <td><%= user.name %></td>
+                  <td></td>
+                <% end %>
+
                 <% if admin_signed_in? %>
                   <td><%= link_to 'Edit', edit_user_path(user) %></td>
                   <td><%= link_to 'Show', user %></td>
