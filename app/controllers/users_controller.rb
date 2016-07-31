@@ -21,6 +21,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    unless @user.vacio? || admin_signed_in?
+      redirect_to root_path
+    end
+
+
   end
 
   # POST /users
@@ -62,6 +67,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

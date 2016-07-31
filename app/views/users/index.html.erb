@@ -24,7 +24,7 @@
 
                 <% if user.vacio? %>
                   <td><%= user.name %></td>
-                  <td class="text-center"><%= link_to "Reservar" %></td>
+                  <td class="text-center"><%= link_to "Reservar", edit_user_path(user) %></td>
                 <% end %>
 
                 <% if user.reservado? %>
