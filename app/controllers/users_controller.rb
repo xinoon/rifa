@@ -52,7 +52,7 @@ class UsersController < ApplicationController
         if @user.vacio?
           @user.reservar!
         end
-        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Reserva realizada con éxito.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

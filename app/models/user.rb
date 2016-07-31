@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   include AASM
 
-
+  def self.ventas
+    self.where(state: "ocupado").count
+  end
 
   aasm :column => :state do
     state :vacio, :initial => true
