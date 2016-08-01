@@ -10,6 +10,7 @@
           <tr>
             <th class="text-center">Número</th>
             <th>Nombre</th>
+            <th class="text-center">Reservar</th>
             <% if admin_signed_in? %>
               <th>Editar</th>
               <th>Mostrar</th>
@@ -19,8 +20,24 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td class="text-center"><%= user.number %></td>
-                <td><%= user.name %></td>
+                <% if user.vacio? %>
+                  <td class="text-center active"><%= user.number %></td>
+                  <td class="active"><%= user.name %></td>
+                  <td class="text-center active"><%= link_to "Reservar", edit_user_path(user) %></td>
+                <% end %>
+
+                <% if user.reservado? %>
+                  <td class="text-center danger"><%= user.number %></td>
+                  <td class="danger">Por Confirmar</td>
+                  <td class="danger"></td>
+                <% end %>
+
+                <% if user.ocupado? %>
+                  <td class="text-center info"><%= user.number %></td>
+                  <td class="info"><%= user.name %></td>
+                  <td class="info"></td>
+                <% end %>
+
                 <% if admin_signed_in? %>
                   <td><%= link_to 'Edit', edit_user_path(user) %></td>
                   <td><%= link_to 'Show', user %></td>

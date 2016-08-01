@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :inicializar_db
+  before_action :authenticate_admin!, except: [:index, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :cancelar, :confirmar]
+
 
   # GET /users
   # GET /users.json
@@ -21,6 +22,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    unless @user.vacio? || admin_signed_in?
+      redirect_to root_path
+    end
+
+
   end
 
   # POST /users
@@ -44,7 +50,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+        if @user.vacio?
+          @user.reservar!
+        end
+        format.html { redirect_to root_path, notice: 'Reserva realizada con éxito.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -63,6 +72,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirmar
+    @user.confirmar!
+    redirect_to root_path
+  end
+
+  def cancelar
+    @user.cancelar!
+    @user.name = nil
+    @user.email = nil
+    @user.save
+    redirect_to root_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -71,7 +94,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:number, :name, :email)
+      #Ver si al inicializar_db me permite inicializar number
+      params.require(:user).permit(:name, :email)
     end
 
     def inicializar_db

@@ -1,7 +1,32 @@
-<div class="container">
 
-  <h1>Añadir Participante</h1>
 
-  <%= render 'form' %>
+  <div class="container">
+    <h1>Añadir Participante</h1>
 
-</div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+
+        <label>Número</label> <br>
+        <input class="form-control" value="<%= @user.number %>" type="text" disabled>
+
+        <%= render 'form' %>
+
+        <br>
+        <% if admin_signed_in? %>
+          <label>Estado</label> <br>
+          <input class="form-control" value="<%= @user.state %>" type="text" disabled>
+          <br>
+
+          <%= link_to "Confirmar", confirmar_path(@user) %> |
+          <%= link_to "Cancelar", cancelar_path(@user)  %> |
+
+        <% end %>
+
+        <%= link_to "Volver", root_path %>
+
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
+  </div>
