@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+  before_action :inicializar_db
   before_action :authenticate_admin!, except: [:index, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :cancelar, :confirmar]
-  before_action :inicializar_db
+
 
   # GET /users
   # GET /users.json
@@ -93,7 +94,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:number, :name, :email)
+      #Ver si al inicializar_db me permite inicializar number
+      params.require(:user).permit(:name, :email)
     end
 
     def inicializar_db
