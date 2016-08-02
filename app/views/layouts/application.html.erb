@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
 </head>
 <body>
 
@@ -12,98 +14,96 @@
     <div class="container top">
       <div class="row">
         <div class="col-md-3">
-          <p class="text-center">Valor Número: $1.000 </p>
-          <p class="text-center">Llevamos vendido: <%= User.ventas %> números</p>
-          <div class="progress">
-            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= User.ventas %>" aria-valuemin="0" aria-valuemax="200" style="min-width: 2em; width: <%= User.porcentaje %>%;">
-            <span class=""><%= User.ventas %>% Complete</span>
-            </div>
-          </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
           <h1 class="text-center">Rifa a Beneficio</h1>
-          <h3 class="text-center">Para nuestro compañero Ken</h3>
-        </div>
-        <div class="col-md-3">
-          <%= image_tag "ken.jpg", :alt => "ken", :class => "img-responsive pull-right br-20"%>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
+          <h3 class="text-center">Para nuestro compañero Ken Rivera</h3>
+          <%= image_tag "dinero.png", :alt => "dinero", :class => "img-responsive center-block"%>
           <p class="text-center">1° Premio: $xx.000 - 2° Premio: $xx.000 - 3° Premio: $xx.000</p>
         </div>
-      </div>
-      <div class="row">
-
-        <!-- Modal-->
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#myModal">
-          Como Participar
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Como Participar</h4>
-              </div>
-              <div class="modal-body">
-                <dl class="dl-horizontal">
-                  <dt><b>Cómo Participar</b></dt>
-                  <dd>
-                    <p>
-                      Se debe realizar un depósito o transferencia electrónica a los siguientes datos: <br> <br>
-                      <b>Nombre: Ken Rivera Salgado <br>
-                      Rut: 17.330.441-2 <br>
-                      Cuenta Rut: 17330441 <br>
-                      Mail: xxxxx@xxxx.com <br></b>
-                    </p>
-                    <p>
-                      Se debe envíar el mail de comprobación de transferencia o depósito al siguiente mail: <b>mail@mail.com</b> indicando el nombre de la persona a concursar.
-                    </p>
-                    <p>
-                      Una vez realizado el pago, se deberá seleccionar el/los números de la lista que estén disponibles, ingresando nombre y mail de contacto cuando se solicite.
-                       Al realizar esta acción, el número quedará reservado.
-                    </p>
-                    <p>
-                      Se revisará cada número reservado de la lista, comprobando que los datos (nombre que aparece en el mail) y cantidad de números seleccionados correspondan al
-                      valor depositado. Si todo esta regla, se aprobará la elección del número.
-                    </p>
-                  </dd>
-
-
-                  <dt><b>Fecha del sorteo:</b></dt>
-                  <dd>
-                    El sorteo se realizará una vez que se vendan la totalidad de los números, fecha que se publicará con anticipación en las redes sociales, en el siguiente link:
-                  </dd>
-
-                  <dt><b>Ganadores:</b></dt>
-                  <dd>
-                    Se eligirá a los ganadores mediante sorteo, el cual se realizará transmitiendo en vivo a través de youtube, transmisión que quedará grabada. El link de transmisión será
-                    informado con anterioridad
-                  </dd>
-
-                  <dt><b>Entrega de premio:</b></dt>
-                  <dd>
-                    Los ganadores serán contactados, solicitándoles una cuenta en donde se realizará una transferencia electrónica a su cuenta. En caso excepcional, se entregará en persona.
-                  </dd>
-
-                </dl>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="col-md-4 post center-block">
+          <!--<%= image_tag "ken.jpg", :alt => "ken", :class => "img-responsive pull-right br-20"%>-->
+          <br><br><br><p class="text-center red"><b>Valor Número: $1.000 </b></p>
+          <div class="">
+            <p class="text-center">Llevamos vendido: <b><%= User.ventas %> números</b></p>
+            <div class="progress center-block">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<%= User.ventas %>" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= User.porcentaje %>%;">
+              <span class=""><%= User.porcentaje %>%</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Modal-->
+          <br>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#myModal">
+            Como Participar
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Como Participar</h4>
+                </div>
+                <div class="modal-body text-justify">
+                  <dl class="dl-horizontal">
+                    <dt><b>Cómo Participar</b></dt>
+                    <dd>
+                      <p>
+                        Se debe realizar un depósito o transferencia electrónica a los siguientes datos: <br> <br>
+                        <b>Nombre: Ken Rivera Salgado <br>
+                        Rut: 17.330.441-2 <br>
+                        Cuenta Rut: 17330441 <br>
+                        Mail: xxxxx@xxxx.com <br></b>
+                      </p>
+                      <p>
+                        Se debe envíar el mail de comprobación de transferencia o depósito al siguiente mail: <b>mail@mail.com</b> indicando el nombre de la persona a concursar.
+                      </p>
+                      <p>
+                        Una vez realizado el pago, se deberá seleccionar el/los números de la lista que estén disponibles, ingresando nombre y mail de contacto cuando se solicite.
+                         Al realizar esta acción, el número quedará reservado.
+                      </p>
+                      <p>
+                        Se revisará cada número reservado de la lista, comprobando que los datos (nombre que aparece en el mail) y cantidad de números seleccionados correspondan al
+                        valor depositado. Si todo esta regla, se aprobará la elección del número.
+                      </p>
+                    </dd>
 
 
-        <!--modal -->
+                    <dt><b>Fecha del sorteo:</b></dt>
+                    <dd>
+                      El sorteo se realizará una vez que se vendan la totalidad de los números, fecha que se publicará con anticipación en las redes sociales, en el siguiente link:
+                    </dd>
 
+                    <dt><b>Ganadores:</b></dt>
+                    <dd>
+                      Se eligirá a los ganadores mediante sorteo, el cual se realizará transmitiendo en vivo a través de youtube, transmisión que quedará grabada. El link de transmisión será
+                      informado con anterioridad
+                    </dd>
+
+                    <dt><b>Entrega de premio:</b></dt>
+                    <dd>
+                      Los ganadores serán contactados, solicitándoles una cuenta en donde se realizará una transferencia electrónica a su cuenta. En caso excepcional, se entregará en persona.
+                    </dd>
+
+                  </dl>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--modal -->
+        </div>
       </div>
     </div>
   </div>

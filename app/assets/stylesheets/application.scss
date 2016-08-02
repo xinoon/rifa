@@ -17,7 +17,7 @@
 @import "bootstrap";
 
 .fluid{
-	background-color: rgb(221, 35, 35);
+	//background-color: rgb(221, 35, 35);
 }
 
 table td:first-child {
@@ -27,6 +27,34 @@ table td:first-child {
 table td:nth-child(3) {
 	width: 150px;
 }
+
+body{
+	font-family: 'Roboto Condensed', sans-serif;
+	background-image: url(image-path('bg.jpg'));
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+
+h1, h3{
+	font-family: 'Aref Ruqaa', serif !important;
+}
+
+h3{
+	margin-top: -5px !important;
+}
+
+.red{
+	color: rgb(255, 0, 23);
+	font-size: 18px;
+}
+
+.progress{
+	max-width: 180px !important;
+}
+
 
 .top{
 	margin-top: 20px;
@@ -39,6 +67,14 @@ table td:nth-child(3) {
 
 .img-responsive{
   width: 100%;
-  max-width: 150px !important;
+  max-width: 300px !important;
   height: auto;
+}
+
+.post{
+	background-image: url(image-path('post.png'));
+	background-size: 100% 100%;
+	height: 200px;
+
+
 }
