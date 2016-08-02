@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
     self.where(state: "ocupado").count
   end
 
+  def self.porcentaje
+    ((self.where(state: "ocupado").count * 100) / 200)
+  end
+
   aasm :column => :state do
     state :vacio, :initial => true
     state :reservado

@@ -16,6 +16,9 @@
 
 @import "bootstrap";
 
+.fluid{
+	background-color: rgb(221, 35, 35);
+}
 
 table td:first-child {
 	width: 100px;
@@ -23,4 +26,19 @@ table td:first-child {
 
 table td:nth-child(3) {
 	width: 150px;
+}
+
+.top{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.br-20{
+		border-radius: 40px;
+	}
+
+.img-responsive{
+  width: 100%;
+  max-width: 150px !important;
+  height: auto;
 }
