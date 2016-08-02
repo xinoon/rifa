@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     end
 
     event :cancelar do
-     transitions :from => :reservado, :to => :vacio
+     transitions :from => [:reservado, :ocupado], :to => :vacio
     end
 
     event :confirmar do

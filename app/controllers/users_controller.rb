@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       #Ver si al inicializar_db me permite inicializar number
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :telefono)
     end
 
     def inicializar_db
