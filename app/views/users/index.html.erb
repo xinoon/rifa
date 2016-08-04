@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <div class="row">
@@ -21,7 +22,7 @@
                 <% if user.vacio? %>
                   <td class="text-center active"><%= user.number %></td>
                   <td class="active"><%= user.name %></td>
-                  <td class="text-center active"><%= link_to "Reservar", edit_user_path(user) %></td>
+                  <td class="text-center active"><%= link_to "Reservar", lista_path(user) %></td>
                 <% end %>
 
                 <% if user.reservado? %>
@@ -37,7 +38,7 @@
                 <% end %>
 
                 <% if admin_signed_in? %>
-                  <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                  <td><%= link_to 'Edit', lista_path(user) %></td>
                   <td><%= link_to 'Show', user %></td>
                 <% end %>
               </tr>

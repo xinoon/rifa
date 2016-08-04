@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :admins
-  resources :users
+
+
+  resources :users, except: [:edit]
+
+  get 'lista/:id/reservar' => "users#edit", as: 'lista'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
